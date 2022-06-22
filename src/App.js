@@ -34,7 +34,7 @@ function App() {
 
     return ( 
       <div>
-        <img id='styleImage' src='./Tsunami_by_hokusai_19th_century.jpg' width="500px" height="500px" alt="Style"/>
+        <img id='styleImage' src='./hokusai_tsunami.jpg' width="500px" height="500px" alt="Style"/>
         <img id='targetImage' src='./dlsu_image.jpg' width="500px" height="500px" alt="Target"/>
         <button onClick={() => transfer()} disabled={!model}>Transfer</button>
         <canvas id='outputImage'  width="500px" height="500px"/>
