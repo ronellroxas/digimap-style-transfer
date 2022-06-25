@@ -17,7 +17,7 @@ class StyleTransfer {
      * @param {*} targetImage The Image wherein the style will be applied to
      * @param {*} canvas Target canvas to draw with
      */
-    async execute(styleImage, targetImage, canvas) {
+    async execute(styleImage, targetImage) {
         if (styleImage == null) return
         if (targetImage == null) return
         
