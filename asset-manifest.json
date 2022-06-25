@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/digimap-style-transfer/static/css/main.073c9b0a.css",
+    "main.js": "/digimap-style-transfer/static/js/main.806fcf20.js",
+    "static/js/787.0d4ffbf9.chunk.js": "/digimap-style-transfer/static/js/787.0d4ffbf9.chunk.js",
+    "index.html": "/digimap-style-transfer/index.html",
+    "main.073c9b0a.css.map": "/digimap-style-transfer/static/css/main.073c9b0a.css.map",
+    "main.806fcf20.js.map": "/digimap-style-transfer/static/js/main.806fcf20.js.map",
+    "787.0d4ffbf9.chunk.js.map": "/digimap-style-transfer/static/js/787.0d4ffbf9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.806fcf20.js"
+  ]
+}
