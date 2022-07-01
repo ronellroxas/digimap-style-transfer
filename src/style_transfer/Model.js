@@ -5,10 +5,10 @@ const MODEL_DIR = './style-transfer/model.json'
 
 class StyleTransfer {
     /**
-     * Loads the model asynchronously.
+     * remove webgl memory headroom
      */
-    async load_model() {
-        this.model = await loadGraphModel(MODEL_DIR);
+    async setup() {
+        tf.ENV.set('WEBGL_DELETE_TEXTURE_THRESHOLD', 0);
     }
 
     /**
@@ -20,13 +20,23 @@ class StyleTransfer {
     async execute(styleImage, targetImage) {
         if (styleImage == null) return
         if (targetImage == null) return
-        
-        //normalize images
-        styleImage = this.normalize(styleImage);
-        targetImage = this.normalize(targetImage);
 
-        let result = this.model.execute([targetImage, styleImage]);
-        return tf.squeeze(result);
+        //Load model
+        let load_model = async() => {
+            tf.ENV.set('WEBGL_DELETE_TEXTURE_THRESHOLD', 0);
+            return (await loadGraphModel(MODEL_DIR));
+        }
+
+        var model = await load_model();
+
+        //normalize images
+        return tf.tidy(() => {
+            styleImage = this.normalize(styleImage);
+            targetImage = this.normalize(targetImage);
+
+            let result = model.execute([targetImage, styleImage]);
+            return tf.squeeze(result);
+        });
     }
 
     /**
