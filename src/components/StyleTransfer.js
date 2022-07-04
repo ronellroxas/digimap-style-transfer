@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './StyleTransfer.css';
 import axios from 'axios';
-
+import { Spinner } from '@chakra-ui/react';
 import { Box, Flex, Text, HStack } from '@chakra-ui/react';
 import { FiUpload, FiNavigation, FiPlusCircle, FiArrowRightCircle } from 'react-icons/fi'
 
@@ -11,6 +11,7 @@ function StyleTransfer() {
     const OUTPUT_IMAGE_ID = "output-image";
 
     const noImageImage = "no_image.png"
+
     // raw image files for API
     const [styleImage, setStyleImage] = useState(null);
     const [contentImage, setContentImage] = useState(null);
@@ -20,6 +21,9 @@ function StyleTransfer() {
     const [styleURL, setStyleURL] = useState(noImageImage);
     const [contentURL, setContentURL] = useState(noImageImage);
     const [outputURL, setOutputURL] = useState(noImageImage);
+
+    //Spinner state
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const updateStyleImage = (e) => {
         console.log('style image updated');
@@ -40,6 +44,8 @@ function StyleTransfer() {
         e.preventDefault();
         let formData = new FormData();
 
+        setIsSubmitting(true);
+
         // build form
         formData.append('content_image', contentImage);
         formData.append('style_image', styleImage);
@@ -51,7 +57,7 @@ function StyleTransfer() {
             }
         }).then(response => {
             setOutputURL('data:image/png;base64,' + response.data.output);
-
+            setIsSubmitting(false);
         });
     }
 
@@ -99,8 +105,18 @@ function StyleTransfer() {
 
                             <Flex w="35vh" h="40vh" align="center" justify="center" flexDir="column" backgroundColor='#82afc2' borderRadius={"10px"} padding="20px" spacing='70px'>
                                 <Text fontSize='20px' fontWeight={"700"} color="white">RESULT</Text>
-                                <img id={OUTPUT_IMAGE_ID} src={outputURL} alt="Output Display" width="250px" height="250px" />
-
+                                {isSubmitting ? 
+                                    <Box w='250px' height='250px' display='flex' alignItems='center'>
+                                        <Spinner    width={100} height={100}
+                                                    speed='0.65s'
+                                                    style={{color: 'white'}}
+                                                    display='block'
+                                                    m='auto'                                     
+                                        />  
+                                    </Box>
+                                    :
+                                    <img id={OUTPUT_IMAGE_ID} src={outputURL} alt="Output Display" width="250px" height="250px" />
+                                }
                                 <input type="submit" value="Execute" id={"submit"} disabled={!styleImage || !contentImage} mt={4} align="center" className="filetype" />
                                 <label className="image-upload" htmlFor="submit">
                                     <HStack spacing='10px' align="center" justify="center" justifyContent='center' >
