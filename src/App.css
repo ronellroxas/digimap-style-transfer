@@ -32,7 +32,39 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+#content-image-input[type="file"] {
+  display: none;
+}
+
+#style-image-input[type="file"] {
+  display: none;
+}
+
+#submit[type="submit"] {
+  display: none;
+}
+
+.label {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.image-upload {
+  margin: auto;
+  width: 205px;
+  height: 30px;
+  padding-top: 10px;
+  color: white;
+  border-radius: 10px;
+  background-color: #b17927;
+  text-align: center;
+  cursor: pointer;
 }
