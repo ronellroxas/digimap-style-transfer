@@ -25,7 +25,7 @@
         "eject": "react-scripts eject",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
-        "heroku-postbuild": "npm install && npm run build && cd api && pip install -r requirements.txt"
+        "heroku-postbuild": "npm install && npm run build"
     },
     "eslintConfig": {
         "extends": [
