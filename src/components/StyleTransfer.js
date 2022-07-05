@@ -63,7 +63,7 @@ function StyleTransfer() {
 
     return (
         <>
-            <Flex height='100vh' flexDir="column" align="center" justify="center" justifyContent='center'>
+            <Flex  w='100vw' flexDir="column" align="center" justify="center" justifyContent='center' display='inline-flex' mx='auto' mt='7vh'>
 
                 <img src="im_ST1.png" alt="IMAGE STYLE TRANSFER" width="500px" />
                 <Box h="70px"></Box>
@@ -129,6 +129,7 @@ function StyleTransfer() {
                         </HStack>
                     </form>
                 </Flex>
+                <img  src='notflix - how to.png' alt="How Does it Work?" width="60%" />
             </Flex>
         </>
 
