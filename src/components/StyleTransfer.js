@@ -51,7 +51,7 @@ function StyleTransfer() {
         formData.append('style_image', styleImage);
 
         // call API
-        axios.post('http://localhost:5000/execute', formData, {
+        axios.post('https://digimap-backend.herokuapp.com/execute', formData, {
             headers: {
                 'content-type': 'multipart/form-data'
             }
