@@ -24,6 +24,8 @@ function StyleTransfer() {
 
     //Spinner state
     const [isSubmitting, setIsSubmitting] = useState(false);
+    
+    const [failed, setFailed] = useState(false);
 
     const updateStyleImage = (e) => {
         console.log('style image updated');
@@ -57,6 +59,9 @@ function StyleTransfer() {
             }
         }).then(response => {
             setOutputURL('data:image/png;base64,' + response.data.output);
+        }).catch((error) => {
+            setFailed(true);
+        }).finally(() => {
             setIsSubmitting(false);
         });
     }
@@ -66,6 +71,12 @@ function StyleTransfer() {
             <Flex  w='100vw' flexDir="column" align="center" justify="center" justifyContent='center' display='inline-flex' mx='auto' mt='7vh'>
 
                 <img src="im_ST1.png" alt="IMAGE STYLE TRANSFER" width="500px" />
+                
+                {failed ? 
+                    <Text color='red'>API failed to complete action. Please try again later or try a different set of images.</Text>
+                    :
+                    null
+                }
                 <Box h="70px"></Box>
                 <Flex height='50vh' width={'150vh'} align="center" justify="center" justifyContent='center' >
 
