@@ -28,6 +28,7 @@ def execute(content_image_raw=None, style_image_raw=None) -> io.BytesIO:
     # Optionally resize the images. It is recommended that the style image is about
     # 256 pixels (this size was used when training the style transfer network).
     # The content image can be any size.
+    content_image = tf.image.resize(content_image, (384, 384))
     style_image = tf.image.resize(style_image, (256, 256))
 
     # Load image stylization module.
